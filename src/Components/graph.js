@@ -14,7 +14,7 @@ export default function GraphicalStats(){
     var jpc,jpr,jpd;
     var uac,uar,uad;
 
-    const [info, setInfo] = useState({})
+    
     const [pak, setPak] = useState({})
     const [aus, setAus] = useState({})
     const [hu, setHu] = useState({})
@@ -24,10 +24,7 @@ export default function GraphicalStats(){
 
     useEffect(()=>{
         async function graphicalData(){
-            const info = await fetch("https://covid19.mathdro.id/api/countries").then(response => response.json());
-            console.log(info);
-            setInfo(info);
-
+           
             const pakInfo = await fetch('https://covid19.mathdro.id/api/countries/Pakistan').then(response=> response.json());
             const ausInfo = await fetch('https://covid19.mathdro.id/api/countries/Australia').then(response=> response.json());
             const huInfo = await fetch('https://covid19.mathdro.id/api/countries/Hungary').then(response=> response.json());
@@ -45,48 +42,7 @@ export default function GraphicalStats(){
             graphicalData();
     },[])
 
-    {Object.keys(pak).map((key,ind)=>{
-            pakc = pak.confirmed.value
-            pakr = pak.recovered.value
-            pakd = pak.deaths.value
-        
-    })}
-
-
-    {Object.keys(aus).map((key,ind)=>{
-        ausc = aus.confirmed.value
-        ausr = aus.recovered.value
-        ausd = aus.deaths.value
-    
-        })}
-
-        {Object.keys(hu).map((key,ind)=>{
-            huc = hu.confirmed.value
-            hur = hu.recovered.value
-            hud = hu.deaths.value
-
-        })}
-
-        {Object.keys(iq).map((key,ind)=>{
-            iqc = iq.confirmed.value
-            iqr = iq.recovered.value
-            iqd = iq.deaths.value
-
-        })}
-
-        {Object.keys(jp).map((key,ind)=>{
-            jpc = jp.confirmed.value
-            jpr = jp.recovered.value
-            jpd = jp.deaths.value
-
-        })}
-
-        {Object.keys(ua).map((key,ind)=>{
-            uac = ua.confirmed.value
-            uar = ua.recovered.value
-            uad = ua.deaths.value
-
-        })}
+   
         const data = {
             labels: ['Pakistan', 'Australia', 'Hungary', 'Iraq', 'Japan', 'Ukrain'],
             datasets: [
@@ -124,6 +80,74 @@ export default function GraphicalStats(){
                               maintainAspectRatio: false
                             }}
                           />   
+                           {Object.keys(pak).map((key,ind)=>{
+         return(
+             <div key={ind}>
+            {  pakc = pak.confirmed.value}
+           { pakr = pak.recovered.value}
+            {pakd = pak.deaths.value}
+             </div>
+         )
+        
+    })}
+
+
+    {Object.keys(aus).map((key,ind)=>{
+     return(
+         <div>
+               { ausc = aus.confirmed.value}
+       { ausr = aus.recovered.value}
+        {ausd = aus.deaths.value}
+         </div>
+     )
+    
+        })}
+
+        {Object.keys(hu).map((key,ind)=>{
+           return(
+               <div>
+                   { huc = hu.confirmed.value}
+           { hur = hu.recovered.value}
+            {hud = hu.deaths.value}
+
+               </div>
+           )
+        })}
+
+        {Object.keys(iq).map((key,ind)=>{
+           return(
+               <div>
+                   { iqc = iq.confirmed.value}
+           { iqr = iq.recovered.value}
+            {iqd = iq.deaths.value}
+               </div>
+           )
+
+        })}
+
+        {Object.keys(jp).map((key,ind)=>{
+            return(
+               <div>
+                {jpc = jp.confirmed.value}
+                {jpr = jp.recovered.value}
+                {jpd = jp.deaths.value}
+               </div> 
+            )
+           
+
+        })}
+
+        {Object.keys(ua).map((key,ind)=>{
+            return(
+                <div>
+                     { uac = ua.confirmed.value}
+                     {  uar = ua.recovered.value}
+                    {uad = ua.deaths.value}
+                </div>
+            )
+          
+
+        })}
                       
 
           
